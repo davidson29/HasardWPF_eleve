@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace DeWPF
 {
@@ -6,7 +7,7 @@ namespace DeWPF
     public abstract class ObjetHasard : IObjetHasard
     {
         protected static readonly Random rnd = new Random();
-
+        
         public string Nom { get; }
 
         public Face[] Faces { get; }
@@ -22,10 +23,16 @@ namespace DeWPF
 
         protected virtual void CreerFaces()
         {
-            for (int valeur = 1; valeur <= NbFaces; valeur++)
+            int valeur;
+
+            for ( valeur = 1; valeur <= NbFaces; valeur++)
             {
                 Faces[valeur-1] = new Face(valeur, valeur.ToString());
             }
+
+            /* S'assure que la variable 'valeur' va bien jusqu'à NbFaces,
+             sinon arrête le programme et affiche le message avec la pile d'appels du programme */
+            Debug.Assert(valeur >= NbFaces, "valeur depasse la valeur de NbFaces");
         }
 
         public Face Lancer()

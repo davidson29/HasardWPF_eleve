@@ -19,7 +19,7 @@ namespace TestDeWPF
             Assert.AreNotSame(septFace.Valeur, 5);
         }
 
-        // test de la classe Piece()
+        // Test de la classe Piece()
         [TestMethod]
         public void TestPiece()
         {
@@ -29,13 +29,22 @@ namespace TestDeWPF
             Assert.AreEqual(piece.Faces[0].Nom, "pile");
         }
 
-        // Test d la lasse De6
+        // Test de la classe De6()
         [TestMethod]
         public void TestD6()
         {
             De6 de = new De6();
             Assert.AreEqual(de.NbFaces, 6);
             Assert.AreEqual(de.Nom, "Dé 6");
+        }
+
+        // Test de la propriété tableau Faces de la classe ObjetHasard()
+        [TestMethod]
+        public void TestObjetHasardFaces()
+        {
+            De6 de = new De6();
+            Assert.AreEqual(de.Faces.Length, 6);
+            Assert.AreEqual(new Piece().Faces.Length, 2);
         }
 
     }
